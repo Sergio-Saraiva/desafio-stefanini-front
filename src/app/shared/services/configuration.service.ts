@@ -23,9 +23,11 @@ export class ConfigurationService {
 
       this.configuration$ = this.http
         .get(this.configurationFile, { responseType: 'text' })
-        .pipe(map((environment) => configurationListIndexed[environment]));
+        .pipe(
+          map((environment) => configurationListIndexed[environment.trim()])
+        );
     }
-    console.log(this.configuration$);
+    this.configuration$.subscribe((data) => console.log(data));
     return this.configuration$;
   }
 }

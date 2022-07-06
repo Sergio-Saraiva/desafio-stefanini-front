@@ -14,8 +14,5 @@ export class ServiceBase {
     this.url$ = configService
       .load()
       .pipe(map((config) => `${config.url}/${urlEnd}`));
-    this.ibgeibgeApiUrl$ = configService
-      .load()
-      .pipe(map((config) => `${config.ibgeApi}/${urlEnd}`));
   }
 }

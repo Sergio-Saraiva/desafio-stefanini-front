@@ -1,0 +1,131 @@
+<form [formGroup]="formGroup" class="row">
+  <mat-form-field class="row">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" formControlName="name" />
+    <mat-error
+      *ngIf="
+        formGroup.controls.name?.touched &&
+        formGroup.controls.name.errors?.minlength
+      "
+      >Este campo deve ter pelo menos 3 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.name?.touched &&
+        formGroup.controls.name.errors?.maxlength
+      "
+      >Este campo deve ter no máximo 300 caracteres</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="row">
+    <mat-label>Idade</mat-label>
+    <input matInput type="text" formControlName="age" />
+    <mat-error
+      *ngIf="
+        formGroup.controls.age?.touched && formGroup.controls.age.errors?.min
+      "
+      >Este campo deve ser maior que 0 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.age?.touched && formGroup.controls.age.errors?.max
+      "
+      >Este campo deve ser menor que 170</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="row">
+    <mat-label>CPF</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="cpf"
+      placeholder="000.000.000-00"
+      mask="000.000.000-00"
+    />
+    <mat-error
+      *ngIf="
+        formGroup.controls.cpf?.touched &&
+        formGroup.controls.cpf.errors?.minlength
+      "
+      >Este campo deve ter pelo menos 11 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.cpf?.touched &&
+        formGroup.controls.cpf.errors?.maxlength
+      "
+      >Este campo deve ter no máximo 11 caracteres</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field class="row">
+    <mat-label>Cidade</mat-label>
+    <input matInput type="text" formControlName="cityName" />
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityName?.touched &&
+        formGroup.controls.cityName.errors?.minlength
+      "
+      >Este campo deve ter pelo menos 3 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityName?.touched &&
+        formGroup.controls.cityName.errors?.maxlength
+      "
+      >Este campo deve ter no máximo 200 caracteres</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="row">
+    <mat-label>UF</mat-label>
+    <mat-select formControlName="cityUF">
+      <mat-option *ngFor="let uf of ufs" [value]="uf.sigla">
+        {{ uf.sigla }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityUF?.touched &&
+        formGroup.controls.cityUF.errors?.minlength
+      "
+      >Este campo deve ter pelo menos 2 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityUF?.touched &&
+        formGroup.controls.cityUF.errors?.maxlength
+      "
+      >Este campo deve ter no máximo 2 caracteres</mat-error
+    >
+  </mat-form-field>
+
+  <!-- <mat-form-field class="row">
+    <mat-label>UF</mat-label>
+    <input matInput type="text" formControlName="cityUF" />
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityUF?.touched &&
+        formGroup.controls.cityUF.errors?.minlength
+      "
+      >Este campo deve ter pelo menos 2 caracteres</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.controls.cityUF?.touched &&
+        formGroup.controls.cityUF.errors?.maxlength
+      "
+      >Este campo deve ter no máximo 2 caracteres</mat-error
+    >
+  </mat-form-field> -->
+  <div class="row">
+    <button
+      class="col"
+      mat-button
+      type="button"
+      (click)="submitForm()"
+      [disabled]="!formGroup.valid"
+    >
+      Salvar
+    </button>
+  </div>
+</form>
